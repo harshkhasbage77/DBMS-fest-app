@@ -103,6 +103,11 @@ INSERT INTO event(Ename, ETypeID, Date) VALUES("Megashow", 4, "2024-03-29");
 
 INSERT INTO admin(email, password) VALUES("admin@gmail.com", "GetStuffDone");
 
+INSERT INTO role(Rname, Description) VALUES("Coordinator", "Responsible for overall coordination of the event");
+INSERT INTO role(Rname, Description) VALUES("Heads", "Responsible for managing the event under the coordinators");
+INSERT INTO role(Rname, Description) VALUES("Secretary", "Responsible for managing the logistics of the event");
+INSERT INTO role(Rname, Description) VALUES("Members", "Responsible for managing the event under the secretaries");
+
 -- Add more students with their details
 INSERT INTO student(Roll, Name, Dept, email, password)
 VALUES 
