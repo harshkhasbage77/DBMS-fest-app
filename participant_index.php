@@ -8,19 +8,55 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body bgcolor="FDEBD0">
-    <?php include 'participant_navbar.php' ?>
-    <h1>Participant</h1>
-    <a href="logout.php">Log out</a>
-    <div><h2>This is the index page</h2></div> <br>
+    <title>Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </head>
 
-    Hello, <?php echo $user_data['Name']?>.
+<body bgcolor="FDEBD0" style="margin: 30px;">
+    <?php include 'participant_navbar.php' ?>
+    <div>
+        <h2>Events</h2>
+    </div> <br>
+
+    <table class="table"> 
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Register</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $result = get_events_data($con);
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>
+                <td>" . $row["EName"] . "</td>
+                <td>" . $row["EType"] . "</td>
+                <td>" . $row["Date"] . "</td>";
+                $query = "SELECT * FROM participate WHERE PID='$user_data[PID]' AND EID='$row[EID]'";
+                $res = mysqli_query($con, $query);
+                
+                if($res && mysqli_num_rows($res) > 0) {
+                    echo "<td> <a class='btn btn-danger btn-sm' href='participant_deregister.php?eid=$row[EID]&pid=$user_data[PID]'> Registered </a> </td>";
+                } else {
+                    echo "<td> <a class='btn btn-primary btn-sm' href='participant_register.php?eid=$row[EID]&pid=$user_data[PID]'> Register </a>  </td>";
+                }
+                echo "</tr>";
+            }
+
+?>
+</tbody>
+    </table>
 
 
 </body>
+
 </html>

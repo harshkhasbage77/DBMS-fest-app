@@ -66,6 +66,15 @@ CREATE TABLE participate (
     FOREIGN KEY(EID) REFERENCES event(EID) ON DELETE CASCADE
 );
 
+CREATE TABLE student_participate (
+    Roll VARCHAR(10),
+    EID INT,
+    Result INT,
+    PRIMARY KEY(Roll, EID),
+    FOREIGN KEY(Roll) REFERENCES student(Roll) ON DELETE CASCADE,
+    FOREIGN KEY(EID) REFERENCES event(EID) ON DELETE CASCADE
+);
+
 CREATE TABLE admin (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) UNIQUE,
@@ -79,17 +88,38 @@ INSERT INTO Etypes(EType) VALUES("Hackathon");
 INSERT INTO Etypes(EType) VALUES("Show");
 INSERT INTO Etypes(EType) VALUES("Experience");
 
-INSERT INTO event(Ename, ETypeID, Date) VALUES("Megaevent", 3, "2024-03-28");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Opening Ceremony", 4, "2024-03-26");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Campus Tour", 5, "2024-03-27");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Robowars", 2, "2024-03-27");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Tech Quiz", 2, "2024-03-27");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Codenite", 3, "2024-03-27");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Developers Point", 3, "2024-03-28");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("YouTuber's Roundtable", 1, "2024-03-28");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Comedy Show", 4, "2024-03-28");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("TEDx Talk", 1, "2024-03-28");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Silent DJ", 5, "2024-03-28");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Stunt Show", 4, "2024-03-29");
-INSERT INTO event(Ename, ETypeID, Date) VALUES("Megashow", 4, "2024-03-29");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Megashow", 4, "2024-03-29");    
 
 INSERT INTO admin(email, password) VALUES("admin@gmail.com", "GetStuffDone");
 
-INSERT INTO student(Roll, Name, Dept) VALUES ("2023CSE1234", "John Doe", "Computer Science");
-INSERT INTO student(Roll, Name, Dept) VALUES ("2023ECE1235", "Jane Smith", "Electronics and Communication");
-INSERT INTO student(Roll, Name, Dept) VALUES ("2022MEC1236", "David Miller", "Mechanical Engineering");
 -- Add more students with their details
+INSERT INTO student(Roll, Name, Dept, email, password)
+VALUES 
+    ("21CS10047", "Omair", "CSE", "o@a.com", "o@a.com"),
+    ("22IT10123", "Alice", "Information Technology", "alice123@it.com", "Secret123!"),    
+    ("PLACE_ROLL", "PLACEHOLDER_NAME", "PLACEHOLDER_DEPT", "PLACEHOLDER_EMAIL", "PLACEHOLDER_PASSWORD");
+
+INSERT INTO role(Rname, Description) VALUES("Coordinator", "Responsible for overall coordination of the event");
+INSERT INTO role(Rname, Description) VALUES("Heads", "Responsible for managing the event under the coordinators");
+INSERT INTO role(Rname, Description) VALUES("Secretary", "Responsible for managing the logistics of the event");
+INSERT INTO role(Rname, Description) VALUES("Members", "Responsible for managing the event under the secretaries");
+
+INSERT INTO student(Roll, Name, Dept, email, password)
+VALUES 
+  ("23ME10987", "Emily", "Mechanical Engineering", "emily.mech@example.com", "secure_pass123"),
+  ("20EC12345", "Bob", "Electronics & Communication", "bob.ec@university.edu", "BobIsTheBest"),
+  ("24CS10567", "David", "Computer Science", "david.cs@college.com", "StrongPassword"),
+  ("22CE10345", "Charlie", "Civil Engineering", "charlie.ce@institute.org", "Charlie123!"),
+  ("21IT10789", "Olivia", "Information Technology", "olivia.it@gmail.com", "Olivia2024");
+

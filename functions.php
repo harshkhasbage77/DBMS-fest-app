@@ -108,4 +108,10 @@ function random_num($length, $con) {
     return $text;
 }
 
+function get_events_data($con) {
+    $query = "SELECT * FROM event NATURAL JOIN Etypes";
+    $result = mysqli_query($con, $query);
+    return $result;
+}
+
 ?>

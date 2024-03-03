@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Student Navbar</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto ">
             <li class="nav-item">
                 <a class="nav-link" href="student_index.php">Home</a>
             </li>
@@ -30,7 +30,7 @@
             <li class="nav-item active">
                 <a class="navbar-brand" href="student_profile.php"><?php echo $user_data['Name'] ?></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item button">
                 <a class="nav-link" href="logout.php">Logout</a>
             </li>
         </ul>
