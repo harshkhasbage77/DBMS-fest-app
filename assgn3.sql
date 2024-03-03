@@ -79,15 +79,25 @@ INSERT INTO Etypes(EType) VALUES("Hackathon");
 INSERT INTO Etypes(EType) VALUES("Show");
 INSERT INTO Etypes(EType) VALUES("Experience");
 
-INSERT INTO event(Ename, ETypeID, Date) VALUES("Megaevent", 3, "2024-03-28");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Opening Ceremony", 4, "2024-03-26");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Campus Tour", 5, "2024-03-27");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Robowars", 2, "2024-03-27");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Tech Quiz", 2, "2024-03-27");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Codenite", 3, "2024-03-27");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Developers Point", 3, "2024-03-28");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("YouTuber's Roundtable", 1, "2024-03-28");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("Comedy Show", 4, "2024-03-28");
+INSERT INTO event(Ename, ETypeID, Date) VALUES("TEDx Talk", 1, "2024-03-28");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Silent DJ", 5, "2024-03-28");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Stunt Show", 4, "2024-03-29");
 INSERT INTO event(Ename, ETypeID, Date) VALUES("Megashow", 4, "2024-03-29");
 
 INSERT INTO admin(email, password) VALUES("admin@gmail.com", "GetStuffDone");
+
+INSERT INTO role(Rname, Description) VALUES("Coordinator", "Responsible for overall coordination of the event");
+INSERT INTO role(Rname, Description) VALUES("Heads", "Responsible for managing the event under the coordinators");
+INSERT INTO role(Rname, Description) VALUES("Secretary", "Responsible for managing the logistics of the event");
+INSERT INTO role(Rname, Description) VALUES("Members", "Responsible for managing the event under the secretaries");
 
 INSERT INTO student(Roll, Name, Dept) VALUES ("2023CSE1234", "John Doe", "Computer Science");
 INSERT INTO student(Roll, Name, Dept) VALUES ("2023ECE1235", "Jane Smith", "Electronics and Communication");
