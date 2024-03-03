@@ -11,13 +11,16 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Home</title>
 </head>
 <body bgcolor="FDEBD0">
+    <?php include 'participant_navbar.php' ?>
     <h1>Participant</h1>
     <a href="logout.php">Log out</a>
     <div><h2>This is the index page</h2></div> <br>
 
     Hello, <?php echo $user_data['Name']?>.
+
+
 </body>
 </html>

@@ -14,10 +14,10 @@
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="student_index.php">Home</a>
+                <a class="nav-link" href="participant_index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="student_volunteer.php">Volunteer</a>
+                <a class="nav-link" href="participant_logistics.php">Logistics</a>
             </li>
         </ul>  
   <div class="mx-auto order-0">
@@ -28,7 +28,7 @@
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="navbar-brand" href="student_profile.php"><?php echo $user_data['Name'] ?></a>
+                <a class="navbar-brand" href="participant_profile.php"><?php echo $user_data['Name'] ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="logout.php">Logout</a>

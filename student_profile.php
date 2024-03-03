@@ -3,7 +3,7 @@ session_start();
     include("connect.php");
     include("functions.php");
 
-    $user_data = check_organizer($con);
+    $user_data = check_student($con);
 ?>
 
 <!DOCTYPE html>
@@ -11,12 +11,13 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Profile</title>
 </head>
 <body bgcolor="FDEBD0">
-    <h1>Organizer</h1>
+    <?php include 'student_navbar.php' ?>
+    <h1>Student</h1>
     <a href="logout.php">Log out</a>
-    <div><h2>This is the index page</h2></div> <br>
+    <div><h2>This is the profile page</h2></div> <br>
 
     Hello, <?php echo $user_data['Name']?>.
 </body>
