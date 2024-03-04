@@ -18,7 +18,7 @@ session_start();
  
     <style> 
     *{
-        color: white;
+        /* color:; */
     }
     .large-padding{
         padding: 2rem 10rem;
@@ -40,45 +40,125 @@ session_start();
     </style>
 </head>
 <body bgcolor="FDEBD0" class="container text-center justify-content-center align-items-center px-3 py-5">
-    <h1>Admin</h1>
+    <h1>Admin Panel</h1>
     <a href="logout.php">Log out</a>
-    <div><h2>This is the index page</h2></div> <br>
+    <div><h2>This is the admin panel page.</h2></div> <br>
+    <div class="section container">
+        <h2>
+            Assign Organizer Role to a Student.
+    </h2>
+        <form method="get">
 
-    Hello, admin.
+        <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="EID">
+        <option selected>Select event</option>
 
-    <form method="get">
+        <?php
+                $result = get_events_data($con);
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "
+                    <option value='$row[EID]'>" . $row["EName"] . "</option>";
+                    
+                }
+        ?>
+        
+        </select>
 
-    <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="EID">
-    <option selected>Select event</option>
+        <select class="form-select form-select-sm h6" aria-label="Small select example" name="Roll">
+        <option selected>Select student</option>
+        <?php
+                $result = get_students_data($con);
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "
+                    <option value='$row[Roll]'>" . $row["Name"] . "</option>";   
+                }
+        ?>
+        </select>
+
+        <input type="submit" class="btn btn-primary px-4 py-2" value="AssignRole">
+
+        </form>
+
+    </div>
+
+
+    <!-- <div class="section container">
+        <h2>
+            Section 2 : Add and Delete Student
+        </h2>
+
+        
+        <select class="form-select form-select-sm h6" aria-label="Small select example" name="Roll">
+        <option selected>Select student to Delete</option>
+    
+        </select>
+
+        <input type="submit" class="btn btn-primary px-4 py-2" value="Delete">
+
+        </form>
+
+
+    </div> -->
 
     <?php
-            $result = get_events_data($con);
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "
-                <option value='$row[EID]'>" . $row["EName"] . "</option>";
-                
-            }
+    if ($_SERVER['REQUEST_METHOD'] == "GET"){
+        $EID = $_GET["EID"];
+        $Roll = $_GET["Roll"];
 
+        $query = "SELECT * FROM student_participate WHERE Roll='$Roll' AND EID='$EID'";
+        $res = mysqli_query($con, $query);
+        if($res && mysqli_num_rows($res) > 0) {
+            echo "<a class='btn btn-danger btn-sm' href='volunteer_register.php?eid=$row[EID]&roll=$user_data[Roll]'> Participant </a>";
+        } else {
+            echo "<a class='btn btn-primary btn-sm' href='volunteer_register.php?eid=$row[EID]&roll=$user_data[Roll]'> Participant </a>";
+        }
+
+        $query = "SELECT * FROM volunteer WHERE Roll='$Roll' AND EID='$EID'";
+        $res = mysqli_query($con, $query);
+        if($res && mysqli_num_rows($res) > 0) {
+            echo "<a class='btn btn-danger btn-sm' href='volunteer_register.php?eid=$row[EID]&roll=$user_data[Roll]'> Volunteer </a>";
+        } else {
+            echo "<a class='btn btn-primary btn-sm' href='volunteer_register.php?eid=$row[EID]&roll=$user_data[Roll]'> Volunteer </a>";
+        }
+
+        $query = "SELECT * FROM manage NATURAL JOIN role WHERE Roll='$Roll' AND EID='$EID'";
+        $res = mysqli_query($con, $query);
+        if($res && mysqli_num_rows($res) > 0) {
+            $data = mysqli_fetch_assoc($res);
+            switch($data["Rname"]) {
+                case "Coordinator":
+                    echo "<a class='btn btn-danger btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Coordinator </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Head </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Secretary </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Member </a>";
+                    break;
+                case "Heads":
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Coordinator </a>";
+                    echo "<a class='btn btn-danger btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Head </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Secretary </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Member </a>";
+                    break;
+                case "Secretary":
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Coordinator </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Head </a>";
+                    echo "<a class='btn btn-danger btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Secretary </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Member </a>";
+                    break;
+                case "Members":
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Coordinator </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Head </a>";
+                    echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Secretary </a>";
+                    echo "<a class='btn btn-danger btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Member </a>";
+                    break;
+            }
+        } else {
+            echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Coordinator </a>";
+            echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Head </a>";
+            echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Secretary </a>";
+            echo "<a class='btn btn-primary btn-sm' href='organizer_register.php?eid=$row[EID]&roll=$user_data[Roll]&role=$user_data[RID]'> Member </a>";
+        }
+    }
 ?>
-    </select>
 
-    <select class="form-select form-select-sm" aria-label="Small select example" name="Roll">
-    <option selected>Select student</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-    <?php
-            $result = get_students_data($con);
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "
-                <option value='$row[Roll]'>" . $row["Name"] . "</option>";   
-            }
-    ?>
-    </select>
-
-    <input type="submit" value="Submit">
-
-    </form>
 
 
 </body>
