@@ -17,8 +17,10 @@ session_start();
     <?php include 'student_navbar.php' ?>
     <h1>Volunteer</h1>
     <a href="logout.php">Log out</a>
-    <div><h2>This is the index page</h2></div> <br>
+    <div><h2>This is the Volunteer's page</h2></div> <br>
 
-    Hello, <?php echo $user_data['Name']?>.
+    Hello, Volunteer <?php echo $user_data['Name']?>.
+
+    
 </body>
 </html>

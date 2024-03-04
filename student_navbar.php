@@ -13,10 +13,10 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto ">
-            <li class="nav-item">
+            <li class="nav-item active m-2 px-2">
                 <a class="nav-link" href="student_index.php">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active m-2 px-2">
                 <a class="nav-link" href="student_volunteer.php">Volunteer</a>
             </li>
         </ul>  
@@ -27,10 +27,10 @@
     </div>
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item active  active m-2 px-4">
                 <a class="navbar-brand" href="student_profile.php"><?php echo $user_data['Name'] ?></a>
             </li>
-            <li class="nav-item button">
+            <li class="nav-item button  active m-2 px-4">
                 <a class="nav-link" href="logout.php">Logout</a>
             </li>
         </ul>
