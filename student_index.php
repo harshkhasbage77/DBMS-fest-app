@@ -15,10 +15,16 @@ session_start();
 </head>
 <body bgcolor="FDEBD0">
     <?php include 'student_navbar.php' ?>
-    <h1>Student</h1>
-    <a href="logout.php">Log out</a>
-    <div><h2>This is the index page</h2></div> <br>
+    <div class="container center">
 
-    Hello, <?php echo $user_data['Name']?>.
+        <h1 class="display-6">Student</h1>
+        <a href="logout.php" class="btn btn-danger m-2 px-2 text-end">Log out</a>
+        <div class="m-6 px-6 py-6"><h2>Welcome to student's index page</h2></div> <br>
+        <div class="container center h4">
+            Hello, <?php echo $user_data['Name']?>.
+
+        </div>
+    
+    </div>
 </body>
 </html>
