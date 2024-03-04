@@ -114,4 +114,11 @@ function get_events_data($con) {
     return $result;
 }
 
+function get_volunteer_data($con, $roll) {
+    $query = "SELECT * FROM volunteer NATURAL JOIN event NATURAL JOIN Etypes WHERE Roll = '$roll'";
+    $result = mysqli_query($con, $query);
+    return $result;
+}
+
+
 ?>

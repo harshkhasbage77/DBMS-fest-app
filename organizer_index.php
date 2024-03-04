@@ -16,8 +16,8 @@ session_start();
 <body bgcolor="FDEBD0">
     <h1>Organizer</h1>
     <a href="logout.php">Log out</a>
-    <div><h2>This is the index page</h2></div> <br>
-
+    <div><h2>This is the organizer's index page. </h2></div> <br>
+    <?php include 'participant_logistics.php' ?>
     Hello, <?php echo $user_data['Name']?>.
 </body>
 </html>

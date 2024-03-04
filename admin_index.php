@@ -29,7 +29,7 @@ session_start();
     }
     body {
             /* Set the background image */
-            background-image: url("./bg.jpg");
+            /* background-image: url("./bg.jpg"); */
 
             /* Optional: Adjust background properties */
             /* background-repeat: no-repeat; Control image repetition */
@@ -46,26 +46,44 @@ session_start();
 
     Hello, admin.
 
-    <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+    <form method="get">
+
+    <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="EID">
     <option selected>Select event</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+
+    <?php
+            $result = get_events_data($con);
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "
+                <option value='$row[EID]'>" . $row["EName"] . "</option>";
+               
+                $query = "SELECT * FROM participate WHERE PID='$user_data[PID]' AND EID='$row[EID]'";
+                $res = mysqli_query($con, $query);
+                
+                if($res && mysqli_num_rows($res) > 0) {
+                    echo "<td> <a class='btn btn-danger btn-sm' href='participant_deregister.php?eid=$row[EID]&pid=$user_data[PID]'> Registered </a> </td>";
+                } else {
+                    echo "<td> <a class='btn btn-primary btn-sm' href='participant_register.php?eid=$row[EID]&pid=$user_data[PID]'> Register </a>  </td>";
+                }
+                echo "</tr>";
+            }
+
+?>
     </select>
 
-    <select class="form-select form-select-sm" aria-label="Small select example">
+    <select class="form-select form-select-sm" aria-label="Small select example" name="Roll">
     <option selected>Select student</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
+    <?php
+    
+    ?>
     </select>
 
-    <select class="form-select form-select-sm" aria-label="Small select example">
-    <option selected>Select role</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-    </select>
+    <input type="submit" value="Submit">
+
+    </form>
 
 
 </body>

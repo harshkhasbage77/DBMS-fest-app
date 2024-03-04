@@ -128,3 +128,4 @@ VALUES
   ("22CE10345", "Charlie", "Civil Engineering", "charlie.ce@institute.org", "Charlie123!"),
   ("21IT10789", "Olivia", "Information Technology", "olivia.it@gmail.com", "Olivia2024");
 
+INSERT INTO manage(Roll, EID, RID) VALUES ("21", "1", "1");
