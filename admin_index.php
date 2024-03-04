@@ -56,16 +56,7 @@ session_start();
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "
                 <option value='$row[EID]'>" . $row["EName"] . "</option>";
-               
-                $query = "SELECT * FROM participate WHERE PID='$user_data[PID]' AND EID='$row[EID]'";
-                $res = mysqli_query($con, $query);
                 
-                if($res && mysqli_num_rows($res) > 0) {
-                    echo "<td> <a class='btn btn-danger btn-sm' href='participant_deregister.php?eid=$row[EID]&pid=$user_data[PID]'> Registered </a> </td>";
-                } else {
-                    echo "<td> <a class='btn btn-primary btn-sm' href='participant_register.php?eid=$row[EID]&pid=$user_data[PID]'> Register </a>  </td>";
-                }
-                echo "</tr>";
             }
 
 ?>
@@ -77,7 +68,11 @@ session_start();
     <option value="2">Two</option>
     <option value="3">Three</option>
     <?php
-    
+            $result = get_students_data($con);
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "
+                <option value='$row[Roll]'>" . $row["Name"] . "</option>";   
+            }
     ?>
     </select>
 

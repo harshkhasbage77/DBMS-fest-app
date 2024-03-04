@@ -120,5 +120,10 @@ function get_volunteer_data($con, $roll) {
     return $result;
 }
 
+function get_students_data($con) {
+    $query = "SELECT * FROM student";
+    $result = mysqli_query($con, $query);
+    return $result;
+}
 
 ?>
