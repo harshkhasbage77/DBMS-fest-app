@@ -12,11 +12,11 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+        <ul class="navbar-nav mr-auto h4">
+            <li class="nav-item active m-2 px-2">
                 <a class="nav-link" href="participant_index.php">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active m-2 px-2">
                 <a class="nav-link" href="participant_logistics.php">Logistics</a>
             </li>
         </ul>  
@@ -25,13 +25,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 align-items-center">
+        <ul class="navbar-nav ml-auto h4">
+            <li class="nav-item active m-2 px-4 h3">
                 <a class="navbar-brand" href="participant_profile.php"><?php echo $user_data['Name'] ?></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="logout.php">Logout</a>
+            <li class="nav-item active m-2 px-4">
+                <a class="nav-link btn btn-outline-danger" href="logout.php">Logout</a>
             </li>
         </ul>
   </div>

@@ -18,14 +18,14 @@ session_start();
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
-<body bgcolor="FDEBD0" style="margin: 30px;">
+<body bgcolor="FDEBD0" >
     <?php include 'participant_navbar.php' ?>
-    <div>
+    <div class="px-5">
         <br>
-        <p class="display-6">Events</p>
+        <p class="display-6 justify-text-center">Events</p>
     </div> <br>
 
-    <table class="table"> 
+    <table class="table m-4"> 
         <thead>
             <tr>
                 <th>Event Name</th>
