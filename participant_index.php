@@ -21,7 +21,8 @@ session_start();
 <body bgcolor="FDEBD0" style="margin: 30px;">
     <?php include 'participant_navbar.php' ?>
     <div>
-        <h2>Events</h2>
+        <br>
+        <p class="display-6">Events</p>
     </div> <br>
 
     <table class="table"> 
